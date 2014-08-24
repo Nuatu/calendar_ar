@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'activerecord'
 gem 'active_record_migrations'
+gem 'week_of_month'
 gem 'pg'
 gem 'pry'
 

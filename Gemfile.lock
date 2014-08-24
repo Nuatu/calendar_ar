@@ -69,6 +69,7 @@ GEM
     thread_safe (0.3.4)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    week_of_month (1.2.3.2)
 
 PLATFORMS
   ruby
@@ -80,3 +81,4 @@ DEPENDENCIES
   pry
   rspec
   shoulda-matchers
+  week_of_month

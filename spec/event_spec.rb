@@ -32,6 +32,16 @@ describe Event do
     end
   end
 
+  describe '.view_month' do
+    it 'should list events for the current month' do
+      test_event = Event.create(:description => 'meeting', :location => 'work', :start => '2014/08/18', :end => '2014/08/19 12:00:00')
+      test_event2 = Event.create(:description => 'son-birthday', :location => 'chuck-e-cheese', :start => '2014/08/23', :end => '2014/08/23 12:00:00')
+      test_event3 = Event.create(:description => 'wedding', :location => '5th-st-reception-hall', :start => '2014/09/03', :end => '2014/09/04 12:00:00')
+      test_event4 = Event.create(:description => 'pub-crawl', :location => '5th-ave-nightclub', :start => '2014/08/30', :end => '2014/08/31 12:00:00')
+      expect(Event.view_month).to eq [test_event, test_event2, test_event4]
+    end
+  end
+
 end
 
 

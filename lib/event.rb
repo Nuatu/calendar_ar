@@ -15,4 +15,11 @@ class Event < ActiveRecord::Base
     last = today.end_of_week
     Event.where(:start => "#{first.convert_to_sql}".."#{last.convert_to_sql}").sort_by_date
   end
+
+  def self.view_month(attributes = {:year => Time.now.year, :month => Time.now.month, :day => Time.now.day})
+    today = Date.new(attributes[:year], attributes[:month], attributes[:day])
+    first = today.beginning_of_month
+    last = today.end_of_month
+    Event.where(:start => "#{first.convert_to_sql}".."#{last.convert_to_sql}").sort_by_date
+  end
 end

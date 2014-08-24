@@ -1,25 +1,8 @@
 class Event < ActiveRecord::Base
+  scope :future, -> { where(:start => Time.now..'2400/01/01 12:00:00').sort_by_date }
+  scope :view_today, -> { where(:start => "#{DateTime.now.convert_to_sql}").sort_by_date }
+  scope :view_this_week, -> { where(:start => Time.now.beginning_of_week..Time.now.end_of_week).sort_by_date }
+  scope :view_this_month, -> { where(:start => Time.now.beginning_of_month..Time.now.end_of_month).sort_by_date }
 
-  def self.future
-    Event.where(:start => Time.now..'2400/01/01 12:00:00').sort_by_date
-  end
 
-  def self.view_today(attributes = {:year => Time.now.year, :month => Time.now.month, :day => Time.now.day})
-    today = Date.new(attributes[:year], attributes[:month], attributes[:day])
-    Event.where(:start => "#{today.convert_to_sql}").sort_by_date
-  end
-
-  def self.view_week(attributes = {:year => Time.now.year, :month => Time.now.month, :day => Time.now.day})
-    today = Date.new(attributes[:year], attributes[:month], attributes[:day])
-    first = today.beginning_of_week
-    last = today.end_of_week
-    Event.where(:start => "#{first.convert_to_sql}".."#{last.convert_to_sql}").sort_by_date
-  end
-
-  def self.view_month(attributes = {:year => Time.now.year, :month => Time.now.month, :day => Time.now.day})
-    today = Date.new(attributes[:year], attributes[:month], attributes[:day])
-    first = today.beginning_of_month
-    last = today.end_of_month
-    Event.where(:start => "#{first.convert_to_sql}".."#{last.convert_to_sql}").sort_by_date
-  end
 end

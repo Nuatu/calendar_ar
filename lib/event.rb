@@ -1,4 +1,6 @@
 class Event < ActiveRecord::Base
+  has_many :notes, :as => :doable
+
   scope :future,          -> { where(:start => Time.now..'2400/01/01 12:00:00').sort_by_date }
   scope :view_today,      -> { where(:start => "#{DateTime.now.convert_to_sql}").sort_by_date }
   scope :view_yesterday,  -> { where(:start => "#{DateTime.now.yesterday.convert_to_sql}").sort_by_date }

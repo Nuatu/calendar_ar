@@ -5,6 +5,8 @@ describe Event do
   it { should have_db_column :start }
   it { should have_db_column :end }
 
+  it { should have_many(:notes) }
+
   describe 'future' do
     it 'should list future events by date' do
       test_event1 = Event.create(:description => 'meeting', :location => 'work', :start => '2014/08/18', :end => '2014/08/19 12:00:00')
@@ -115,7 +117,6 @@ describe Event do
       expect(Event.view_next_month).to eq [test_event3]
     end
   end
-
 end
 
 

@@ -7,7 +7,7 @@ describe Event do
 
   it { should have_many(:notes) }
 
-  describe 'future' do
+  describe '.future' do
     it 'should list future events by date' do
       test_event1 = Event.create(:description => 'meeting', :location => 'work', :start => '2014/08/18', :end => '2014/08/19 12:00:00')
       test_event2 = Event.create(:description => 'son-birthday', :location => 'chuck-e-cheese', :start => '2014/08/24', :end => '2014/08/25 12:00:00')

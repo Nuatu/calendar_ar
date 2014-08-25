@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
 
   validates :description, presence: true
 
-  before_validation :normalize_description, on: :create
+  before_validation :normalize_description, :normalize_location, on: :create
 
   scope :future,          -> { where(:start => Time.now..'2400/01/01 12:00:00').sort_by_date }
   scope :view_today,      -> { where(:start => "#{DateTime.now.convert_to_sql}").sort_by_date }
@@ -19,5 +19,9 @@ class Event < ActiveRecord::Base
   private
     def normalize_description
       self.description = self.description.downcase.titleize
+    end
+
+    def normalize_location
+      self.location = self.location.downcase.titleize
     end
 end

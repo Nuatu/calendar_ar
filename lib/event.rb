@@ -1,9 +1,7 @@
 class Event < ActiveRecord::Base
   has_many :notes, :as => :doable
-
   validates :description, presence: true
-
-  before_validation :normalize_description, :normalize_location, on: :create
+  after_validation :normalize_description, :normalize_location, on: :create
 
   scope :future,          -> { where(:start => Time.now..'2400/01/01 12:00:00').sort_by_date }
   scope :view_today,      -> { where(:start => "#{DateTime.now.convert_to_sql}").sort_by_date }
@@ -18,10 +16,10 @@ class Event < ActiveRecord::Base
 
   private
     def normalize_description
-      self.description = self.description.downcase.titleize
+      self.description != nil ? self.description = self.description.downcase.titleize : return
     end
 
     def normalize_location
-      self.location = self.location.downcase.titleize
+      self.location != nil ? self.location = self.location.downcase.titleize : return
     end
 end

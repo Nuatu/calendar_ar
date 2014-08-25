@@ -4,7 +4,7 @@ describe Event do
   it { should have_db_column :location }
   it { should have_db_column :start }
   it { should have_db_column :end }
-
+  it { should validate_presence_of :description }
   it { should have_many(:notes) }
 
   describe '.future' do

@@ -13,9 +13,9 @@ Command line Ruby / Active Record / Postgres app for managing events, to-do's, a
 
 <li>users can create and manage notes to associate with events or to-do's.</li>
 
-*Event class includes multiple __scopes__.
+<li>event class includes multiple 'scopes'.</li>
 
-*Note class includes use of __polymorphic association__ to expose 'doable' alias to events and to-do's.
+<li>note class includes use of 'polymorphic association' to expose 'doable' alias to events and to-do's.</li>
 
 </ul>
 

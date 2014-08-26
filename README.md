@@ -5,7 +5,7 @@ by [Nuatu Tseggai] (https://github.com/nuatu) August 24, 2014
 _______________
 
 ###About
-Command line Ruby / Postgres app for managing events, to-do's, and notes.
+Command line Ruby / Active Record / Postgres app for managing events, to-do's, and notes.
 <ul>
 <li>users can create and manage multiple events.</li>
 

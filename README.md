@@ -15,7 +15,7 @@ Command line Ruby / Active Record / Postgres app for managing events, to-do's, a
 
 <li>event class includes multiple 'scopes'.</li>
 
-<li>note class makes use of 'polymorphic association' to expose 'doable' alias to events and to-do's.</li>
+<li>note class uses of 'polymorphic association' to expose 'doable' alias to events and to-do's.</li>
 
 </ul>
 

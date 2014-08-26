@@ -24,17 +24,17 @@ describe Event do
       test_event2 = Event.create(:description => 'son-birthday', :location => 'chuck-e-cheese', :start => '2014/08/24', :end => '2014/08/25 12:00:00')
       test_event3 = Event.create(:description => 'wedding', :location => '5th-st-reception-hall', :start => '2014/09/03', :end => '2014/09/04 12:00:00')
       test_event4 = Event.create(:description => 'daughter-birthday', :location => 'bowling-alley', :start => '2014/08/23', :end => '2014/08/24 12:00:00')
-      test_event5 = Event.create(:description => 'wife-birthday', :location => 'italian-restaurant', :start => '2014/08/25', :end => '2014/08/26 12:00:00')
-      expect(Event.view_today).to eq [test_event2]
+      test_event5 = Event.create(:description => 'wife-birthday', :location => 'italian-restaurant', :start => DateTime.now.convert_to_sql, :end => DateTime.now.tomorrow.convert_to_sql)
+      expect(Event.view_today).to eq [test_event5]
     end
   end
 
   describe '.view_yesterday' do
     it 'should list todays events' do
       test_event1 = Event.create(:description => 'meeting', :location => 'work', :start => '2014/08/18', :end => '2014/08/19 12:00:00')
-      test_event2 = Event.create(:description => 'son-birthday', :location => 'chuck-e-cheese', :start => '2014/08/24', :end => '2014/08/25 12:00:00')
+      test_event2 = Event.create(:description => 'son-birthday', :location => 'chuck-e-cheese', :start => '2014/08/23', :end => '2014/08/23 12:00:00')
       test_event3 = Event.create(:description => 'wedding', :location => '5th-st-reception-hall', :start => '2014/09/03', :end => '2014/09/04 12:00:00')
-      test_event4 = Event.create(:description => 'daughter-birthday', :location => 'bowling-alley', :start => '2014/08/23', :end => '2014/08/24 12:00:00')
+      test_event4 = Event.create(:description => 'daughter-birthday', :location => 'bowling-alley', :start => DateTime.now.yesterday.convert_to_sql, :end => DateTime.now.convert_to_sql)
       test_event5 = Event.create(:description => 'wife-birthday', :location => 'italian-restaurant', :start => '2014/08/25', :end => '2014/08/26 12:00:00')
       expect(Event.view_yesterday).to eq [test_event4]
     end
@@ -43,11 +43,11 @@ describe Event do
   describe '.view_tomorrow' do
     it 'should list tomorrows events' do
       test_event1 = Event.create(:description => 'meeting', :location => 'work', :start => '2014/08/18', :end => '2014/08/19 12:00:00')
-      test_event2 = Event.create(:description => 'son-birthday', :location => 'chuck-e-cheese', :start => '2014/08/24', :end => '2014/08/25 12:00:00')
+      test_event2 = Event.create(:description => 'son-birthday', :location => 'chuck-e-cheese', :start => DateTime.now.tomorrow.convert_to_sql, :end => DateTime.now.tomorrow.tomorrow.convert_to_sql)
       test_event3 = Event.create(:description => 'wedding', :location => '5th-st-reception-hall', :start => '2014/09/03', :end => '2014/09/04 12:00:00')
       test_event4 = Event.create(:description => 'daughter-birthday', :location => 'bowling-alley', :start => '2014/08/23', :end => '2014/08/24 12:00:00')
       test_event5 = Event.create(:description => 'wife-birthday', :location => 'italian-restaurant', :start => '2014/08/25', :end => '2014/08/26 12:00:00')
-      expect(Event.view_tomorrow).to eq [test_event5]
+      expect(Event.view_tomorrow).to eq [test_event2]
     end
   end
 

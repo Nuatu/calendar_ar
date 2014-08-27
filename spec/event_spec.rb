@@ -15,6 +15,7 @@ describe Event do
       test_event3 = Event.create(:description => 'wedding', :location => '5th-st-reception-hall', :start => '2014/09/03', :end => '2014/09/04 12:00:00')
       test_event4 = Event.create(:description => 'daughter-birthday', :location => 'bowling-alley', :start => '2014/08/23', :end => '2014/08/24 12:00:00')
       test_event5 = Event.create(:description => 'wife-birthday', :location => 'italian-restaurant', :start => '2014/08/25', :end => '2014/08/26 12:00:00')
+      binding.pry
       expect(Event.future).to eq [test_event3]
     end
   end

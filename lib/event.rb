@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
   has_many :notes, :as => :doable
+
   validates :description, presence: true
   after_validation :normalize_description, :normalize_location, on: :create
 

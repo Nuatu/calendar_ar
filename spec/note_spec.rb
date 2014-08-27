@@ -3,6 +3,10 @@ describe Note do
   it { should have_db_column :description }
   it { should validate_presence_of :description }
 
+  it { should belong_to :doable }
+  it { should belong_to :doable }
+
+
   describe '.all' do
     it 'should list all notes' do
       note1 = Note.create(:description => 'meeting')
